@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import { BrowserRouter,Switch ,Route} from 'react-router-dom';
+import Login from "./components/layouts/login.js";
+import Signup from "./components/layouts/signup.js";
+import MainParent from "./components/layouts/main"
+import crossed from "./components/layouts/crossed.js"
+import peopleList from "./components/layouts/peopleList.js";
+import MainContextProvider from "./context/mainContext";
+import AuthContextProvider from "./context/authContext";
+import ContactListContextProvider from "./context/contactList";
+class App extends React.Component {
+  render(){
   return (
+    <BrowserRouter>
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContextProvider>
+    <MainContextProvider>
+    <ContactListContextProvider>
+    <Switch>
+      <Route  exact path="/" component={ Login}/>
+      <Route  exact path="/signup" component={ Signup}/>
+      <Route  path="/main" socket={this.props.socket} component={ MainParent} />
+      <Route  path="/peopleList" component={ peopleList} />
+
+      <Route  path="*" component={ crossed} />
+ 
+
+    </Switch>
+    </ContactListContextProvider>
+    </MainContextProvider>
+    </AuthContextProvider>
+     </div>
+     
+     </BrowserRouter>
   );
+ }
 }
 
 export default App;
