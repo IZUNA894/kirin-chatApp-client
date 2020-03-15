@@ -114,7 +114,7 @@ import {MainContext} from "../../../context/mainContext";
         if(contact)
         return (
             <div id ="contact-profile" className="contact-profile">
-                <img src={'http://localhost:3001/users/' + contact._id + '/avatar'} alt="" />
+                <img src={'http://kirin-chatapp-server.herokuapp.com/users/' + contact._id + '/avatar'} alt="" />
                 <p>{contact.username}</p>
                 <div className="social-media">
                     <i className="fa fa-facebook" aria-hidden="true"></i>
