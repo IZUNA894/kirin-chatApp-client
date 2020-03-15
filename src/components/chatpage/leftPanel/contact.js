@@ -79,7 +79,7 @@ class ContactSon extends Component {
             return <li className={"contact"} onClick={()=>{this.props.setOpenedContact(contact)}} key={contact._id}>
                         <div className="wrap">
                             <span className="contact-status online"></span>
-                            <img src={'http://localhost:3001/users/' + contact._id + '/avatar'} alt="" />
+                            <img src={'http://kirin-chatapp-server.herokuapp.com/users/' + contact._id + '/avatar'} alt="" />
                             <div className="meta">
                             <p className="name">{contact.username}</p>
                             <p className="preview">{contact.lastMsg ? contact.lastMsg : ''}</p>
