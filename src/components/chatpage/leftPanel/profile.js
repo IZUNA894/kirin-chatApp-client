@@ -38,7 +38,7 @@ import axios from 'axios';
         return (
             <div id="profile">
                 <div className="wrap">
-                    <img id="profile-img" src={'http://localhost:3001/users/' + this.state.id + '/avatar'} className="online" alt="" />
+                    <img id="profile-img" src={'http://kirin-chatapp-server.herokuapp.com/users/' + this.state.id + '/avatar'} className="online" alt="" />
                     <p>{ sender }</p>
                     <i className="fa fa-chevron-down expand-button" aria-hidden="true"></i>
                     <div id="status-options">

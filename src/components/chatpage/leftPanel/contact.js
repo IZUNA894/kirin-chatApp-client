@@ -38,7 +38,7 @@ class ContactSon extends Component {
         var relArry="";
         console.log('sender',sender);
         if(this.state.number == 0){
-            axios.get('http://localhost:3001/rel/getFriend', {
+            axios.get('http://kirin-chatapp-server.herokuapp.com/rel/getFriend', {
                 params: {
                 sender :sender
                 }

@@ -59,8 +59,8 @@ class messages extends Component {
             if(msgArray){
                 var MsgList = msgArray.map((msg)=>{
 
-                    sentLink = "http://localhost:3001/users/" + user._id + '/avatar'
-                    repliesLink = "http://localhost:3001/users/" + recieverId + '/avatar'
+                    sentLink = "http://kirin-chatapp-server.herokuapp.com/users/" + user._id + '/avatar'
+                    repliesLink = "http://kirin-chatapp-server.herokuapp.com/users/" + recieverId + '/avatar'
                     return(
                        
                         <li className={ msg.route ==="sent" ? 'sent' : 'replies'} key = { Math.random()}>
