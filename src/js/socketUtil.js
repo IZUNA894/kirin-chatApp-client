@@ -1,5 +1,5 @@
 import socketIOClient from "socket.io-client";
-var END_POINT='https://kirin-chatapp-server.herokuapp.com/';
+var END_POINT='http://localhost:3001/';
 var socket = socketIOClient(END_POINT);
 export var hello = ()=>{
     console.log("hello from socket util...");

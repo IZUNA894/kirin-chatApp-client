@@ -15,9 +15,7 @@ import {hello, sendMsg,recieveMsg,join} from "../../js/socketUtil";
 import {MainContext} from "../../context/mainContext";
 import {ContactListContext} from "../../context/contactList";
 
- class mainParent extends Component{
-
- }
+ 
  function MainParent(props) {
   //var {sender,setOpenedContact} = useContext(MainContext);
   var {setContacts,contacts} = useContext(ContactListContext);
@@ -161,7 +159,7 @@ import {ContactListContext} from "../../context/contactList";
 
 
                 {/* <!-- right panel... --> */}
-                <div className="content">
+                <div className="content" style={{height:100 + 'vh'}}>
                   <ContactProfile  addMsgtostate = {this.addMsgtostate} addMsgstoState = {this.addMsgstoState} messages={this.state.messages} />
                   <Messages messages={storeData.messages} randomKey={storeData.randomKey} addMsgtostate = {this.addMsgtostate} addMsgstoState = {this.addMsgstoState}/>
                   <MsgInput addMsgtostate = {this.addMsgtostate} socket={this.props.socket} contact={storeData.openedContact} sender={storeData.owner}/>

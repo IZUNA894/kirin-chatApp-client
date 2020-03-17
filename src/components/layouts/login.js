@@ -17,7 +17,7 @@ import axios from "axios";
         var email = this.state.email;
         var password = this.state.password;
 
-        axios.post('http://kirin-chatapp-server.herokuapp.com/users/login', {
+        axios.post('http://localhost:3001/users/login', {
                 email,
                 password
             })

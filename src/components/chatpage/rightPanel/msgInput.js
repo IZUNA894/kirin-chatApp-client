@@ -65,9 +65,8 @@ import {MainContext} from "../../../context/mainContext";
               <div className="wrap">
                 <form className="form-inline" id="msgForm" action="" method="" onSubmit={this.handleSubmit}>
                   <input type="text" name="val" placeholder="Write your message..." id="msgData" onChange={this.handleChange}/>
-                  <i className="fa fa-paperclip attachment" aria-hidden="true"></i>
-                  <button className="submit" id="submit-button"><i className="fa fa-paper-plane" aria-hidden="true"></i></button>
-                  <button className="submit" id="find-me"><i className="fa fa-paper-plane" aria-hidden="true"></i></button>
+                  <button className="submit" id="submit-button" style={{height:'45px'}}><i className="fa fa-paper-plane" aria-hidden="true"></i></button>
+                  <button className="submit" id="find-me" style={{height:'45px'}}><i className="fa fa-paper-plane" aria-hidden="true"></i></button>
 
                 </form>
               </div>

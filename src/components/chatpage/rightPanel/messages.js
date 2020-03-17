@@ -58,23 +58,22 @@ class messages extends Component {
             console.log(msgArray);
             if(msgArray){
                 var MsgList = msgArray.map((msg)=>{
-
-                    sentLink = "http://kirin-chatapp-server.herokuapp.com/users/" + user._id + '/avatar'
-                    repliesLink = "http://kirin-chatapp-server.herokuapp.com/users/" + recieverId + '/avatar'
-                    return(
-                       
-                        <li className={ msg.route ==="sent" ? 'sent' : 'replies'} key = { Math.random()}>
-                        <img src={msg.route == 'sent' ? sentLink : repliesLink } alt="" />
-                            <p>{msg.val}<br/>
-                                <span style={{float:"right",color:"grey",fontSize:15 +'px'}}>{msg.time}</span>
-                            </p>
-                        </li>
-                    )
+                                    sentLink = "http://localhost:3001/users/" + user._id + '/avatar'
+                                    repliesLink = "http://localhost:3001/users/" + recieverId + '/avatar'
+                                    return(
+                                    
+                                        <li className={ msg.route ==="sent" ? 'sent' : 'replies'} key = { Math.random()}>
+                                        <img src={msg.route == 'sent' ? sentLink : repliesLink } alt="" />
+                                            <p>{msg.val}<br/>
+                                                <span style={{float:"right",color:"grey",fontSize:15 +'px'}}>{msg.time}</span>
+                                            </p>
+                                        </li>
+                                    )
                 }
 
                 )
                 return (
-                    <div className="messages" id="msgBoard" style={{height:88 +'vh',backgroundColor:'black'}}>
+                    <div className="messages" id="msgBoard" style={{height:'100vh' , backgroundColor:'black'}}>
                         <ul id="msgBoardUl">
                             {MsgList}
                         </ul>
@@ -83,7 +82,7 @@ class messages extends Component {
             }
             else{
                 return(
-                    <div className="messages" id="msgBoard" style={{height:88 +'vh',backgroundColor:'black'}}>
+                    <div className="messages" id="msgBoard" style={{height:100 +'vh',backgroundColor:'black'}}>
                         <ul id="msgBoardUl">
                             {'No messages in this chat ...\n.Start conversion by saying hello'}
                         </ul>

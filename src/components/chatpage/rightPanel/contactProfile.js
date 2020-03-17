@@ -44,7 +44,7 @@ import {MainContext} from "../../../context/mainContext";
         // if(this.props.contact.isLoaded == 0){
         // setTimeout(()=>{
         if(shouldFetch){
-            axios.get('http://kirin-chatapp-server.herokuapp.com/msg/getMsg', {
+            axios.get('http://localhost:3001/msg/getMsg', {
                 params: {
                 sender,
                 reciever
@@ -94,7 +94,7 @@ import {MainContext} from "../../../context/mainContext";
         var {sender} = this.context;
         //var props  = this.props;
         //var sender = "Mike Ross";
-        axios.patch("http://kirin-chatapp-server.herokuapp.com/rel/deleteFriend",{
+        axios.patch("http://localhost:3001/rel/deleteFriend",{
             sender,uid:usr._id
         })
         .then((res)=>{
@@ -114,7 +114,7 @@ import {MainContext} from "../../../context/mainContext";
         if(contact)
         return (
             <div id ="contact-profile" className="contact-profile">
-                <img src={'http://kirin-chatapp-server.herokuapp.com/users/' + contact._id + '/avatar'} alt="" />
+                <img src={'http://localhost:3001/users/' + contact._id + '/avatar'} alt="" />
                 <p>{contact.username}</p>
                 <div className="social-media">
                     <i className="fa fa-facebook" aria-hidden="true"></i>

@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
-import "../../css/peopleList.css";
+import styles from "../../css/peopleList.module.css";
 import axios from "axios";
 import {MainContext} from "../../context/mainContext"
 import SearchBox from "../chatpage/leftPanel/searchBox"
+import poke1 from "../../images/poke-3.png";
+
+
+
 class peopleList extends Component {
     state={
         key:null,
@@ -21,7 +25,7 @@ class peopleList extends Component {
         var owner = localStorage.getItem('user');
         owner = JSON.parse(owner);
 
-            axios.get('http://kirin-chatapp-server.herokuapp.com/users/all')
+            axios.get('http://localhost:3001/users/all')
                  .then(async function (response) {
                    users = response.data;
                    console.log(users);
@@ -49,10 +53,11 @@ class peopleList extends Component {
      //this.setState({users:4});
     }
     addFriend(usr){
+        console.log("clicked")
         var {sender} = this.context;
         var props  = this.props;
         //var sender = "Mike Ross";
-        axios.patch("http://kirin-chatapp-server.herokuapp.com/rel/addFriend",{
+        axios.patch("http://localhost:3001/rel/addFriend",{
             sender,uid:usr._id
         })
         .then(function(res){
@@ -69,12 +74,19 @@ class peopleList extends Component {
         var users="";
         var users = this.state.usrs || "";
         console.log(users);
+        let divClass = [
+            
+            'mr-3',
+            styles.avatar
+            
+        ];
+        divClass = divClass.join(' ');
         users = users && users.map((usr)=>{
             return <div className="col-md-12">                       
-                <div className="card">
-                    <div className="card-body">
-                        <div className="media align-items-center"><span style={{backgroundImage: 'url(http://kirin-chatapp-server.herokuapp.com/users/' + usr._id + '/avatar)'}} className="avatar avatar-xl mr-3"></span>
-                            <div className="media-body overflow-hidden">
+                <div className={styles.card}>
+                    <div className={styles.cardBody}>
+                        <div className="media align-items-center"><span  style={{backgroundImage: 'url(http://localhost:3001/users/' + usr._id + '/avatar)'}} className={divClass} ></span>
+                            <div className="media-body overflow-hidden" style={{paddingLeft:'20px'}}>
                                 <h5 className="card-text mb-0">{usr.name}</h5>
                                 <p className="card-text text-muted">{'@' +  usr.username}</p>
                                 <p className="card-text">{usr.email}</p>
@@ -85,7 +97,7 @@ class peopleList extends Component {
                         </div>
                     </div>
 
-                    <div className="card-body">
+                    <div className={styles.cardBody}>
                         <a href="#" className="btn btn-primary" onClick={(e)=>{e.target.innerHTML= "User Reported"}}>Report User</a>
                         <a href="#" className="btn btn-primary" style={{float:'right'}} onClick={()=>this.addFriend(usr)}>Add friend</a>
 
@@ -99,14 +111,22 @@ class peopleList extends Component {
         
         
         return (
-            <div className="container">
-                <div className="row">
-                    <h1>Find New Friend</h1>
-                    {/* <SearchBox/> */}
+            <div className={styles.body}>
+            <div className="container" style={{height:'100vh'}}>
+                <div className="jumbotron">
+                    <div className="row justify-content-center" >
+                        <div className={styles.headBox}>
+                        <h1 className={styles.h1}  style={{fontFamily:"comic sans ms",fontWeight:'bold'}}>Find New Friend</h1>
+                        </div>
+                    </div>
+                </div>
+                <div className="row justify-content-center">
+                    <SearchBox/>
                 </div>
                 <div className="row">
                 {users}
                 </div>
+            </div>
             </div>
         )
     }
