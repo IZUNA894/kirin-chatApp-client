@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import styles from "../../css/peopleList.module.css";
+import "../../css/chatpage.css";
+import styles from "../../css/peopleList.module.css"
 import axios from "axios";
 import {MainContext} from "../../context/mainContext"
-import SearchBox from "../chatpage/leftPanel/searchBox"
+import SearchBox from "../peopleList/searchBar"
 import poke1 from "../../images/poke-3.png";
 
 
@@ -97,7 +98,7 @@ class peopleList extends Component {
                         </div>
                     </div>
 
-                    <div className={styles.cardBody}>
+                    <div className={styles.cardBody} style={{paddingTop:'0rem'}}>
                         <a href="#" className="btn btn-primary" onClick={(e)=>{e.target.innerHTML= "User Reported"}}>Report User</a>
                         <a href="#" className="btn btn-primary" style={{float:'right'}} onClick={()=>this.addFriend(usr)}>Add friend</a>
 

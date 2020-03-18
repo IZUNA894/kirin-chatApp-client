@@ -9,7 +9,7 @@ import Messages from "../chatpage/rightPanel/messages";
 import MsgInput from "../chatpage/rightPanel/msgInput";
 import "../../css/reset.min.css";
 import queryString from 'query-string';
-import "../../css/chatpage.css";
+import styles from "../../css/chatpage.css";
 import axios from "axios";
 import {hello, sendMsg,recieveMsg,join} from "../../js/socketUtil";
 import {MainContext} from "../../context/mainContext";
@@ -149,8 +149,8 @@ import {ContactListContext} from "../../context/contactList";
             
         
 
-              <div id="frame">
-                <div id="sidepanel" style={{height:100 + 'vh'}}>
+              <div id="frame" >
+                <div id="sidepanel" class="sidepanel" style={{height:100 + 'vh'}}>
                   <Profile username={storeData.owner ? storeData.owner : ""}/>
                   <SearchBox/>
                   <Contact contacts={storeData.contacts} sender={storeData.owner} />

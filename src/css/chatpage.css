@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #27ae60;
+  background : white;
   font-family: "proxima-nova", "Source Sans Pro", sans-serif;
   font-size: 1em;
   letter-spacing: 0.1px;
@@ -18,7 +18,7 @@
   width: 100%;
   min-width: 360px;
   /* max-width: 1000px; */
-  /* height: 92vh; */
+  height: 100vh;
   min-height: 300px;
   /* max-height: 720px; */
   background: #E6EAEA;
@@ -501,6 +501,12 @@
   height: 100%;
   overflow: hidden;
   position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline
 }
 @media screen and (max-width: 735px) {
   #frame .content {
@@ -547,6 +553,12 @@
   max-height: calc(100% - 93px);
   overflow-y: scroll;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline
 }
 @media screen and (max-width: 735px) {
   #frame .content .messages {
@@ -559,6 +571,27 @@
 }
 #frame .content .messages::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
+}
+#frame .content .messages-no-contact{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+}
+#frame .content .inner-text{
+  font-family: cursive;
+  font-size:1.5rem;
+  color:#435f7a;
+  display: block;
+}
+#frame .content .inner-messages-no-contact{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+
+}
+#frame .content .messages-no-contact .inner-messages-no-contact .addContact-icon{
+  font-size:100px;
 }
 #frame .content .messages ul li {
   display: inline-block;
@@ -670,4 +703,60 @@
 }
 #frame .content .message-input .wrap button:focus {
   outline: none;
+}
+/* css for sign in and log in page */
+.logo-image{
+  display:block;
+  margin:auto;
+  width:400px;
+  height:100px;
+}
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+  margin:auto;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  width: calc(100% - 25px);
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  width: calc(100% - 25px);
+}
+.form-signin input[type="password"]::after{
+  content:"*jfjfj";
+}
+.new-user-text{
+  text-align: center;
+}
+label{
+  font-size: 1.2rem;
+  font-family: cursive;
+}
+.errMsg{
+  color:red;
+  font-family: ;
+}
+
+/* peoplelist  css */
+.card-text{
+  margin-bottom: 0.1rem;
 }

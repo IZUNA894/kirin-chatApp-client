@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import {MainContext} from "../../../context/mainContext";
-
+import "../../../css/chatpage.css";
  class contactProfile extends Component {
      static contextType = MainContext;
     addMsgstoState = (tokenId,msgs)=>{
@@ -126,7 +126,7 @@ import {MainContext} from "../../../context/mainContext";
         )
         else
         return <div id ="contact-profile" className="contact-profile">
-                    <p>{'No contact'}</p>
+                    <p>{''}</p>
         
                 </div>
     }

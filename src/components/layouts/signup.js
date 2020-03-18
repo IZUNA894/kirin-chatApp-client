@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import "../../css/login.css";
 import axios from "axios";
 import Logo from "../../images/kirin.png";
+import "../../css/chatpage.css";
+
  class Signup extends Component {
      state={
          name:null,
@@ -90,27 +91,47 @@ import Logo from "../../images/kirin.png";
     render() {
         return (
             <div>
-              <div className="">
-                  <p className="">Already have a account ?<a href="/">Sign-In</a></p>
-              </div>
-              <p className="errMsg" ></p>
+              
+              <img className="mb-4 logo-image" src={Logo} alt=""/>
 
               <form className="form-signin" onSubmit={this.handleSubmit}>
-                <img className="mb-4" src={Logo} alt="" width="400" height="100"/>
-                <h1 className="h3 mb-3 font-weight-normal">Sign - Up</h1>
-                <h3 className="h3 mb-3 font-weight-normal">* field are required</h3>
-                <p id="errMsg"></p>
-                <input type="text" name="name" id="name" className="form-control" placeholder="name" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="This name will be helpful for others to identify you" required  />
-                <input type="text" name="email" id="email" className="form-control" placeholder="email" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="Your email.Email should be unique " required  />
-                <input type="number" name="phoneno" id="phoneno" className="form-control" placeholder="phoneno" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="Phone no will be used to send otp and verify your no." required  />
-                <input type="file" name="avatar" id="avatar" className="form-control" placeholder="avatar" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="choose a pic of you,in png or jpeg format,under 100kb" required  />
-                <input type="text" name="username" id="username" className="form-control" placeholder="username" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="username will be handle.it shouldn't contain any special char (#,$,%) or uppercase.can contain underscore(-)" required  />
-                <input type="password" name="password" id="password" className="form-control" placeholder="password" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="should be greater than 8 characters" required />
-                <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" placeholder="confirmPassword" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="should match with above password" required  />
-
+                <h1 className="h3 mb-3 font-weight-normal text-center">Sign - Up</h1>
+                <h3 className="h3 mb-3 font-weight-normal text-danger" style={{fontSize:'.9rem'}} >* field are required</h3>
+                <div class="form-group ">
+                    <label for="name">Name <span class="errMsg" id="addon">*</span></label>
+                    <input type="text" name="name" id="name" className="form-control" placeholder="name" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="This name will be helpful for others to identify you" required  aria-describedby="addon"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="errMsg" id="addon">*</span></label>
+                    <input type="email" name="email" id="email" className="form-control" placeholder="email" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="Your email.Email should be unique " required  />
+                </div>
+                <div class="form-group">
+                    <label for="phoneNo">Phone no <span class="errMsg" id="addon">*</span></label>
+                    <input type="number" name="phoneno" id="phoneno" className="form-control" placeholder="phoneno" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="Phone no will be used to send otp and verify your no." required  />
+                </div>
+                <div class="form-group">
+                    <label for="avatar">Avatar <span class="errMsg" id="addon">*</span></label>
+                    <input type="file" name="avatar" id="avatar" className="form-control" placeholder="avatar" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="choose a pic of you,in png or jpeg format,under 1Mb" required  />
+                </div>
+                <div class="form-group">
+                    <label for="username">Username <span class="errMsg" id="addon">*</span></label>
+                    <input type="text" name="username" id="username" className="form-control" placeholder="username" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="username will be handle.it shouldn't contain any special char (#,$,%) or uppercase.can contain underscore(-)" required  />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password <span class="errMsg" id="addon">*</span></label>
+                    <input type="password" name="password" id="password" className="form-control" placeholder="password" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="should be greater than 8 characters" required />
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm password <span class="errMsg" id="addon">*</span></label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" placeholder="confirmPassword" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="should match with above password" required  />
+                </div>
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Sign -Up</button>
               </form>
+              <div className="new-user-text">
+                  <p>Already have an Account ? <a href='/'> Login</a></p>
+                  <p className="errMsg" ></p>
 
+              </div>
             </div>
         )
     }

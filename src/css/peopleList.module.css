@@ -19,8 +19,8 @@
     background-size: 300px 200px;
 } */
 .avatar {
-    width: 5rem;
-    height: 5rem;
+    width: 7rem;
+    height: 7rem;
     line-height: 2rem;
     border-radius: 50%;
     display: inline-block;
@@ -136,11 +136,23 @@
         justify-content: center;
     }
     .h1{
-        font-size: 50px;
+        font-size: 3rem;
         position: absolute;
-        top:55px;
-        left:140px;
+        top:3rem;
+        left:13rem;
         justify-content: center;
         text-align: center;
         color:white;
     }
+
+    @media screen and (max-width: 735px) {
+        .headBox{
+            height: 104px;
+            
+        }
+    .h1 {
+      font-size:2rem;
+      top:2rem;
+      left:3rem;
+    }
+  } 

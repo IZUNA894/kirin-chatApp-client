@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "../../css/login.css"
+ import "../../css/chatpage.css"
 import Logo from "../../images/kirin.png";
 import axios from "axios";
 
@@ -45,18 +45,26 @@ import axios from "axios";
     }
     render() {
         return (
-            <div>
-              <p className="errMsg" ></p>
-              <form className="form-signin" onSubmit={this.handleSubmit}>
-                <img className="mb-4" src={Logo} alt="" width="400" height="100"/>
-                <h1 className="h3 mb-3 font-weight-normal">Please Log in</h1>
-                <input type="text" name="email" id="inputEmail" className="form-control" placeholder="email" onChange={this.handleChange} required  />
-                <input type="password" name="password" id="inputPassword" className="form-control" placeholder="password" onChange={this.handleChange} required />
+            <div >
+              
+              <img className="mb-4 logo-image" src={Logo} alt=""/>
 
+              <form className="form-signin" onSubmit={this.handleSubmit}>
+                <h1 className="h3 mb-3 font-weight-normal text-center">Please Log in</h1>
+                <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" name="email" id="inputEmail" className="form-control" placeholder="email" onChange={this.handleChange} required  />
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" name="password" id="inputPassword" className='form-control'  placeholder="password" onChange={this.handleChange} required />
+                </div>
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
               </form>  
-              <div className="">
+              <div className="new-user-text">
                   <p>New User ? <a href='/signup'>  Sign Up</a></p>
+                  <p className="errMsg" ></p>
+
               </div>
             </div>
         )

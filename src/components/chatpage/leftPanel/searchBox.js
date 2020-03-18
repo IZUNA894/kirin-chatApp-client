@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import styles from  "../../../css/peopleList.module.css";
+import  "../../../css/chatpage.css";
 
  class SearchBox extends Component {
     render() {
         return (
-            <div id="search" className={styles.search}>
-                <input type="text" className={styles.input} placeholder="Search contacts..." />
-                <a href="#" className={styles.search_icon}><i className="fa fa-search" aria-hidden="true"></i></a>
+            <div id="search" className="search">
+                <input type="text" className="input" placeholder="Search contacts..." />
+                <a href="#" className="search-icon"><i className="fa fa-search" aria-hidden="true"></i></a>
 
             </div>
         )

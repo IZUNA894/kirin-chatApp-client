@@ -91,8 +91,13 @@ class messages extends Component {
             }
         }else{
             return(
-                <div style={{height:100 + 'vh'}}>
-                    Choose contact to chat
+                <div className="messages-no-contact" style={{height:100 + 'vh'}}>
+                    <div className="inner-messages-no-contact">
+                        <p className="inner-text">Choose contact to chat</p>
+                   </div>
+                   <div className="inner-messages-no-contact">
+                        <i className="fa fa-user-plus fa-fw addContact-icon"></i>
+                   </div>
                 </div>
             )
         }
