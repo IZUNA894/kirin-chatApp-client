@@ -51,12 +51,12 @@ import axios from "axios";
 
               <form className="form-signin" onSubmit={this.handleSubmit}>
                 <h1 className="h3 mb-3 font-weight-normal text-center">Please Log in</h1>
-                <div class="form-group">
-                    <label for="inputEmail">Email</label>
+                <div className="form-group">
+                    <label htmlFor="inputEmail">Email</label>
                     <input type="email" name="email" id="inputEmail" className="form-control" placeholder="email" onChange={this.handleChange} required  />
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword">Password</label>
+                <div className="form-group">
+                    <label htmlFor="inputPassword">Password</label>
                     <input type="password" name="password" id="inputPassword" className='form-control'  placeholder="password" onChange={this.handleChange} required />
                 </div>
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Log in</button>

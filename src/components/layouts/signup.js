@@ -97,33 +97,33 @@ import "../../css/chatpage.css";
               <form className="form-signin" onSubmit={this.handleSubmit}>
                 <h1 className="h3 mb-3 font-weight-normal text-center">Sign - Up</h1>
                 <h3 className="h3 mb-3 font-weight-normal text-danger" style={{fontSize:'.9rem'}} >* field are required</h3>
-                <div class="form-group ">
-                    <label for="name">Name <span class="errMsg" id="addon">*</span></label>
-                    <input type="text" name="name" id="name" className="form-control" placeholder="name" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="This name will be helpful for others to identify you" required  aria-describedby="addon"/>
+                <div className="form-group ">
+                    <label htmlFor="name">Name <span className="errMsg" id="addon">*</span></label>
+                    <input type="text" name="name" id="name" className="form-control" placeholder="name" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="This name will be helpful for others to identify you" required  />
                 </div>
-                <div class="form-group">
-                    <label for="email">Email <span class="errMsg" id="addon">*</span></label>
-                    <input type="email" name="email" id="email" className="form-control" placeholder="email" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="Your email.Email should be unique " required  />
+                <div className="form-group">
+                    <label htmlFor="email">Email <span className="errMsg" id="addon">*</span></label>
+                    <input type="email" name="email" id="email" className="form-control" placeholder="email" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="Your email.Email should be unique " required  />
                 </div>
-                <div class="form-group">
-                    <label for="phoneNo">Phone no <span class="errMsg" id="addon">*</span></label>
-                    <input type="number" name="phoneno" id="phoneno" className="form-control" placeholder="phoneno" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="Phone no will be used to send otp and verify your no." required  />
+                <div className="form-group">
+                    <label htmlFor="phoneNo">Phone no <span className="errMsg" id="addon">*</span></label>
+                    <input type="number" name="phoneno" id="phoneno" className="form-control" placeholder="phoneno" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="Phone no will be used to send otp and verify your no." required  />
                 </div>
-                <div class="form-group">
-                    <label for="avatar">Avatar <span class="errMsg" id="addon">*</span></label>
-                    <input type="file" name="avatar" id="avatar" className="form-control" placeholder="avatar" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="choose a pic of you,in png or jpeg format,under 1Mb" required  />
+                <div className="form-group">
+                    <label htmlFor="avatar">Avatar <span className="errMsg" id="addon">*</span></label>
+                    <input type="file" name="avatar" id="avatar" className="form-control" placeholder="avatar" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="choose a pic of you,in png or jpeg format,under 1Mb" required  />
                 </div>
-                <div class="form-group">
-                    <label for="username">Username <span class="errMsg" id="addon">*</span></label>
-                    <input type="text" name="username" id="username" className="form-control" placeholder="username" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="username will be handle.it shouldn't contain any special char (#,$,%) or uppercase.can contain underscore(-)" required  />
+                <div className="form-group">
+                    <label htmlFor="username">Username <span className="errMsg" id="addon">*</span></label>
+                    <input type="text" name="username" id="username" className="form-control" placeholder="username" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="username will be handle.it shouldn't contain any special char (#,$,%) or uppercase.can contain underscore(-)" required  />
                 </div>
-                <div class="form-group">
-                    <label for="password">Password <span class="errMsg" id="addon">*</span></label>
-                    <input type="password" name="password" id="password" className="form-control" placeholder="password" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="should be greater than 8 characters" required />
+                <div className="form-group">
+                    <label htmlFor="password">Password <span className="errMsg" id="addon">*</span></label>
+                    <input type="password" name="password" id="password" className="form-control" placeholder="password" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="should be greater than 8 characters" required />
                 </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm password <span class="errMsg" id="addon">*</span></label>
-                    <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" placeholder="confirmPassword" onChange={this.handleChange} data-toggle="tooltip" data-placement="right" title="should match with above password" required  />
+                <div className="form-group">
+                    <label htmlFor="confirmPassword">Confirm password <span className="errMsg" id="addon">*</span></label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" placeholder="confirmPassword" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="should match with above password" required  />
                 </div>
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Sign -Up</button>
               </form>
