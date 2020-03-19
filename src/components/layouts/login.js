@@ -33,7 +33,7 @@ import axios from "axios";
                 this.props.history.push("./main");
             })
             .catch(function (error) {
-                console.log(error.response);
+                //console.log(error.response);
                 var errMsg = document.querySelector('.errMsg');
 
                 if(error.response.status == 400)
