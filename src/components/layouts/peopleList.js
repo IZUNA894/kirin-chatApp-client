@@ -26,7 +26,7 @@ class peopleList extends Component {
         var owner = localStorage.getItem('user');
         owner = JSON.parse(owner);
 
-            axios.get('http://localhost:3001/users/all')
+            axios.get('http://kirin-chatapp-server.herokuapp.com/users/all')
                  .then(async function (response) {
                    users = response.data;
                    console.log(users);
@@ -58,7 +58,7 @@ class peopleList extends Component {
         var {sender} = this.context;
         var props  = this.props;
         //var sender = "Mike Ross";
-        axios.patch("http://localhost:3001/rel/addFriend",{
+        axios.patch("http://kirin-chatapp-server.herokuapp.com/rel/addFriend",{
             sender,uid:usr._id
         })
         .then(function(res){
@@ -86,7 +86,7 @@ class peopleList extends Component {
             return <div className="col-md-12">                       
                 <div className={styles.card}>
                     <div className={styles.cardBody}>
-                        <div className="media align-items-center"><span  style={{backgroundImage: 'url(http://localhost:3001/users/' + usr._id + '/avatar)'}} className={divClass} ></span>
+                        <div className="media align-items-center"><span  style={{backgroundImage: 'url(http://kirin-chatapp-server.herokuapp.com/users/' + usr._id + '/avatar)'}} className={divClass} ></span>
                             <div className="media-body overflow-hidden" style={{paddingLeft:'20px'}}>
                                 <h5 className="card-text mb-0">{usr.name}</h5>
                                 <p className="card-text text-muted">{'@' +  usr.username}</p>
