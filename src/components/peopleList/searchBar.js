@@ -1,3 +1,5 @@
+// this is search bar for people list..
+// again this is just for show not doing anything...
 import React, { Component } from 'react';
 import styles from  "../../css/peopleList.module.css";
 

@@ -1,3 +1,7 @@
+// this code  is upcoming feature ...
+// for sending user geolocatiom to another user as msg
+
+
 var button = document.querySelector('#find-me');
 button.addEventListener('click', geoFindMe);
 

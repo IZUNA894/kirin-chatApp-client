@@ -9,15 +9,13 @@ import Messages from "../chatpage/rightPanel/messages";
 import MsgInput from "../chatpage/rightPanel/msgInput";
 import "../../css/reset.min.css";
 import queryString from 'query-string';
-import styles from "../../css/chatpage.css";
 import axios from "axios";
-import {hello, sendMsg,recieveMsg,join} from "../../js/socketUtil";
+import {join} from "../../js/socketUtil";
 import {MainContext} from "../../context/mainContext";
 import {ContactListContext} from "../../context/contactList";
 
  
  function MainParent(props) {
-  //var {sender,setOpenedContact} = useContext(MainContext);
   var {setContacts,contacts} = useContext(ContactListContext);
   return(
       <Main setContacts={setContacts} contacts={contacts} socket= {props.socket} queryString = {props.location.search}/>
@@ -42,33 +40,24 @@ import {ContactListContext} from "../../context/contactList";
 
    static contextType = MainContext;
 
-  //  handleClick = (contact)=>{
-  //    //* var storeData = this.props.localData || this.state;
-
-  //    this.setState({openedContact:contact});
-  //    //console.log(contact);
-  //    //console.log(storeData.openedContact);
-
-  //  }
+  //this func will add single msg to state...
+  // called when socket recieve or send the msg
    addMsgtostate = (msg)=>{
-    //* var storeData = this.props.localData || this.state;
+
     var {sender} = this.context;
     var {openedContact} = this.context;
     var reciever = openedContact && openedContact.username;
-    //var reciever  = msg.sender;
     var storeData = this.state;
-    //let tokenId = 'MikeRossHarveySpecter';
     var tokenId="";
-    //var sender = this.state.owner;
-    //var reciever = this.state.openedContact.name;
+    //sometimes reciever is getting undefined ...dont know how...this is bug i think..
+    //so this is for preventive measure...
+    if(!reciever)
+    return;
+
     console.log("at creashing 1 site ",openedContact);
     console.log("at crashing site",sender,reciever);
-        if(sender.length < reciever.length)
-            tokenId = sender + reciever;
-            else
-            tokenId = reciever + sender;
+    tokenId = sender < reciever ? sender + reciever : reciever + sender;
 
-        tokenId = tokenId.split(" ").join().replace(/,/g,"");
     let messages = {};
     messages = storeData.messages;
     if(storeData.messages[tokenId]){
@@ -97,9 +86,9 @@ import {ContactListContext} from "../../context/contactList";
     this.setState({randomKey:Math.random()});
 
    }
-
+  //this function set multiple msg to state,and other storage bodies...
+  //call when we fetch msgs of a contact from server...
    addMsgstoState = (tokenId,msgs)=>{
-    //tokenId = 'MikeRossHarveySpecter';
     var storeData = this.state;
     let messages={};
     messages = storeData.messages;
@@ -110,26 +99,16 @@ import {ContactListContext} from "../../context/contactList";
     messages[tokenId][data]=[];
     messages[tokenId].data= [...msgs];
     messages[tokenId].isLoaded = 1;
-    //console.log(storeData.messages.tokenId,tokenId);
-    //console.log(messages);
+    
     this.setState({messages});
 
-    // var contactId = storeData.openedContact.id;
-    // var contacts = [...storeData.contacts];
-    // contacts = contacts.map((contact)=>{
-    //   if(contactId === contact.id){
-    //     contact.isLoaded++;
-    //   }
-    //   return contact;
-    // });
-    // this.setState({contacts});
+    
      this.setState({randomKey:Math.random()});              // this is used to force update <messages/> component 
 
    }
-   
+   // call to let a usr join his unique socket room
    componentWillMount(){
     var {addSender} = this.context;
-    //var {name} = queryString.parse(this.props.queryString);
     var user = localStorage.getItem('user');
     //console.log(name);
     user = JSON.parse(user);
@@ -138,11 +117,9 @@ import {ContactListContext} from "../../context/contactList";
     addSender(user.username);
     join(user.username);
     }
-    //this.props.setState({owner:name});
-    //this.state = this.props.localData;
+   
    }
     render() {
-        //* var storeData = this.props.localData || this.state;
         var storeData = this.state;
         //console.log("dataStore" ,storeData);
         return (
@@ -174,6 +151,8 @@ import {ContactListContext} from "../../context/contactList";
         )
     }
 }
+
+//again redundant redux codes...not doing anything...
 var mapStateToProps = (dataStore)=>{
   var state={
     owner:null,

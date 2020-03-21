@@ -1,12 +1,17 @@
+// this component is showing friend profile with whom usr is chatting ,on right side
+// this component serves very  important role in fetching messags from server of selected contacted
+
 import React, { Component } from 'react'
 import axios from "axios";
 import {MainContext} from "../../../context/mainContext";
 import "../../../css/chatpage.css";
+
  class contactProfile extends Component {
      static contextType = MainContext;
     addMsgstoState = (tokenId,msgs)=>{
         this.props.addMsgstoState(tokenId,msgs);
     }
+
     wrapper = (func)=>{
         return(
             (tokenId,msgs)=>{
@@ -20,31 +25,22 @@ import "../../../css/chatpage.css";
         var {sender,openedContact} = this.context;
         var reciever = openedContact && openedContact.username;
         var route="";
-        var tokenId="";
         var msgs="";
         if(!reciever){
             return;
         }
-        if(sender.length < reciever.length)
-            tokenId = sender + reciever;
-        else
-            tokenId = reciever + sender;
-
-        tokenId = tokenId.split(" ").join().replace(/,/g,"");
+        var tokenId = sender < reciever ? sender + reciever : reciever + sender;
 
         console.log(sender,reciever);
-        //* var somecall = this.props.setMsgsToStore;
-        //var addMsgstoState = this.props.addMsgstoState 
-        //console.log(this.props.contact.isLoaded);
+        
         var shouldFetch = 1;
-        //console.log(this.props.messages[tokenId].isLoaded);
+       // checcking if msg for selected contct are already or not
         if(this.props.messages[tokenId] && this.props.messages[tokenId].isLoaded==1)
             shouldFetch = 0
         var addMsgstoState = this.wrapper(this.addMsgstoState);
-        // if(this.props.contact.isLoaded == 0){
-        // setTimeout(()=>{
+        //axios req to fetch msg from server
         if(shouldFetch){
-            axios.get('http://kirin-chatapp-server.herokuapp.com/msg/getMsg', {
+            axios.get('http://localhost:3001/msg/getMsg', {
                 params: {
                 sender,
                 reciever
@@ -65,16 +61,12 @@ import "../../../css/chatpage.css";
                     return{
                         val:msg.val,
                         route,
-                        time:"12:49 pm"
+                        time:msg.time
                     }
                 })
                 
 
-                //console.log(msgs,tokenId);
-                //* await somecall(tokenId,msgs,()=>console.log("process completed"));
-                //anothercall("ojojo",()=>this.setState({ key: Math.random() }));
-                //this.setState({ key: Math.random() });
-                //shouldComponentUpdate();
+              
                 addMsgstoState(tokenId,msgs);
             })
             .catch(function (error) {
@@ -82,25 +74,17 @@ import "../../../css/chatpage.css";
             }); 
 
         }
-        //},3000);
-        //}
-        // setTimeout(()=>this.setState({ key: Math.random() }),3000);
-        // var somecall = (tokenId,msgs)=>{
-        // console.log("chacha ji");
-        // this.props.setMsgsToStore(tokenId,msgs);
-        // }
+      
     }
     deleteFriend = (usr)=>{
         var {sender} = this.context;
-        //var props  = this.props;
-        //var sender = "Mike Ross";
-        axios.patch("http://kirin-chatapp-server.herokuapp.com/rel/deleteFriend",{
+       
+        axios.patch("http://localhost:3001/rel/deleteFriend",{
             sender,uid:usr._id
         })
         .then((res)=>{
             console.log("inside axios");
             console.log(res);
-            //console.log(this.props);
             window.location.reload();
         })
         .catch(function(err){
@@ -114,7 +98,7 @@ import "../../../css/chatpage.css";
         if(contact)
         return (
             <div id ="contact-profile" className="contact-profile">
-                <img src={'http://kirin-chatapp-server.herokuapp.com/users/' + contact._id + '/avatar'} alt="" />
+                <img src={'http://localhost:3001/users/' + contact._id + '/avatar'} alt="" />
                 <p>{contact.username}</p>
                 <div className="social-media">
                     <i className="fa fa-facebook" aria-hidden="true"></i>

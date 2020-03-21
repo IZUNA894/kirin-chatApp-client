@@ -1,3 +1,4 @@
+// this component is for showing usr friend list on left hand...
 import React, { Component,useContext} from 'react';
 import axios from 'axios';
 import {ContactListContext} from "../../../context/contactList";
@@ -17,37 +18,35 @@ class ContactSon extends Component {
     }
     static contextType = ContactListContext;
 
-    setActive = (e)=>{
-
-        console.log(e);
-    }
+    // setting contacts loaclly...
     setContacts = (contacts)=>{
         this.setState({contacts});
         this.setState({number:1});
     }
+
     componentDidUpdate(){
-        //var {setContacts} = useContext(ContactListContext);
-        //var {sender} = useContext(MainContext);
+        // for setting contacts in context
         var setContacts=this.props.setContacts;
+
         var sender= this.props.sender;
 
 
        
-        var somecall = this.setContacts;
-        //var sender = this.props.sender;
+        //var somecall = this.setContacts;
         var relArry="";
         console.log('sender',sender);
+
+        // axios req for fetching friend list from server
         if(this.state.number == 0){
-            axios.get('http://kirin-chatapp-server.herokuapp.com/rel/getFriend', {
+            axios.get('http://localhost:3001/rel/getFriend', {
                 params: {
                 sender :sender
                 }
             })
-            .then(async function (response) {
+            .then(async (response) =>{
                 var relArry = response.data;
                 console.log(relArry,sender);
 
-                //relArry = JSON.parse(relArry);
                 console.log("from axios req...");
                 console.log(relArry);
                 relArry = relArry.map((obj)=>{
@@ -55,7 +54,10 @@ class ContactSon extends Component {
                 });
                 console.log('final Array' ,relArry);
                 if(relArry.length>0){
-                somecall(relArry);
+
+                // local setting call
+                this.setContacts(relArry);
+                //context setting call
                 setContacts(relArry);
                 }
             })
@@ -68,18 +70,19 @@ class ContactSon extends Component {
     
     }
     render() {
+        // checking if contacts are not fetched yet,if not then fetch them
         if(this.state.number == 0)
         this.componentDidUpdate();
-
+        
+        // if we have contacts then display them here..
         var {contacts} = this.context;
-        //console.log('before arry',relArry);
         console.log('contacts' , contacts);
         console.log(this.state);
         var contactList=contacts && contacts.map((contact)=>{
             return <li className={"contact"} onClick={()=>{this.props.setOpenedContact(contact)}} key={contact._id}>
                         <div className="wrap">
                             <span className="contact-status online"></span>
-                            <img src={'http://kirin-chatapp-server.herokuapp.com/users/' + contact._id + '/avatar'} alt="" />
+                            <img src={'http://localhost:3001/users/' + contact._id + '/avatar'} alt="" />
                             <div className="meta">
                             <p className="name">{contact.username}</p>
                             <p className="preview">{contact.lastMsg ? contact.lastMsg : ''}</p>

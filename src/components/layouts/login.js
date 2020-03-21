@@ -13,11 +13,19 @@ import axios from "axios";
     }
     handleSubmit = (e)=>{
         e.preventDefault();
+        var button = document.querySelector('#submitButton');
+
         console.log(this.state);
         var email = this.state.email;
         var password = this.state.password;
-
-        axios.post('http://kirin-chatapp-server.herokuapp.com/users/login', {
+        if(email && password){
+        //if usr has filled email and password and click the submit button
+        //disabled it...so the user cannot press it again..
+        //this will prevent unneccasary req to server...thus error reduceed...
+        button.setAttribute("disabled","disabled");
+        }
+        
+        axios.post('http://localhost:3001/users/login', {
                 email,
                 password
             })
@@ -36,11 +44,14 @@ import axios from "axios";
                 //console.log(error.response);
                 var errMsg = document.querySelector('.errMsg');
 
-                if(error.response.status == 400)
+                if(error && error.response && error.response.status && error.response.status == 400){
                 errMsg.innerHTML = error.response.data;
+                //if error hass released the submit buttom so user can press it again...
+                button.removeAttribute("disabled");
+                }
             }); 
 
-
+    
 
     }
     render() {
@@ -59,7 +70,7 @@ import axios from "axios";
                     <label htmlFor="inputPassword">Password</label>
                     <input type="password" name="password" id="inputPassword" className='form-control'  placeholder="password" onChange={this.handleChange} required />
                 </div>
-                <button className="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+                <button id="submitButton" className="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
               </form>  
               <div className="new-user-text">
                   <p>New User ? <a href='/signup'>  Sign Up</a></p>

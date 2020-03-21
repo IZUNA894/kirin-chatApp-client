@@ -1,3 +1,4 @@
+// this function is reduntant...
 var addTimestamp = function(msg){
   var Msg = {};
   Msg.value =msg;
@@ -7,14 +8,18 @@ var addTimestamp = function(msg){
   //console.log(Msg);
   return Msg;
 };
+
+// this function is reduntant...
 function makeMsg(msg){
   var Msg = addTimestamp(msg);
   return Msg;
 }
-console.log("hello from util.js");
+// this function is reduntant...
 function sayHello(){
   console.log("hhhh");
 }
+
+//this function is for initialising tooltip for bootstrap...
 $(document).ready(function(){
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()

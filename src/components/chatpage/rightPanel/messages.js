@@ -1,6 +1,6 @@
+// this component is rendering our msg board
 import React, { Component } from 'react'
 import {recieveMsg} from "../../../js/socketUtil";
-import axios from "axios";
 import {connect} from "react-redux";
 import $ from 'jquery';
 import {MainContext} from "../../../context/mainContext"
@@ -12,22 +12,12 @@ class messages extends Component {
     static contextType = MainContext;
 
     componentDidMount(){
-        // recieveMsg().then((Msg)=>{
-        //   console.log(Msg)
-        //   this.props.addMsgtostate(Msg);
-        //  });
-        
-
-        recieveMsg((ele)=>this.props.addMsgtostate(ele));
-        
-        
+    // here we are listening for incoming msg...through socket io..and adding them to state...
+        recieveMsg((ele)=>this.props.addMsgtostate(ele));    
     }
-    // this.forceUpdate(){
-    //     console.log("hello from should component updatre");
-    //     return true;
-
-    // };
+   
     componentDidUpdate(){
+        //for automatically scrolling the msg board down...
         $("#msgBoard").animate({
             scrollTop:  $(document).height() *1000
           }, "fast","swing");
@@ -36,7 +26,6 @@ class messages extends Component {
         var {sender,openedContact} =  this.context;
         var user = localStorage.getItem('user');
         user = JSON.parse(user);
-        //var sender = this.props.owner;
         var reciever = openedContact && openedContact.username;
         var tokenId = "";
         var recieverId = openedContact && openedContact._id;
@@ -46,20 +35,18 @@ class messages extends Component {
         var sentLink = "";
         var repliesLink = "";
         if(contact && sender && reciever){
-            if(sender.length < reciever.length)
-            tokenId = sender + reciever;
-            else
-            tokenId = reciever + sender;
-            //console.log(tokenId);
+            //if  a contact is choosen...
 
-            tokenId = tokenId.split(" ").join().replace(/,/g,"");
-            //console.log(tokenId);
+            tokenId = sender < reciever ? sender + reciever : reciever + sender;
+
             var msgArray = this.props.messages && this.props.messages[tokenId] && this.props.messages[tokenId].data;
             console.log(msgArray);
             if(msgArray){
+                // if a contact is choosen and
+                //if participants have past msg...
                 var MsgList = msgArray.map((msg)=>{
-                                    sentLink = "http://kirin-chatapp-server.herokuapp.com/users/" + user._id + '/avatar'
-                                    repliesLink = "http://kirin-chatapp-server.herokuapp.com/users/" + recieverId + '/avatar'
+                                    sentLink = "http://localhost:3001/users/" + user._id + '/avatar'
+                                    repliesLink = "http://localhost:3001/users/" + recieverId + '/avatar'
                                     return(
                                     
                                         <li className={ msg.route ==="sent" ? 'sent' : 'replies'} key = { Math.random()}>
@@ -81,6 +68,8 @@ class messages extends Component {
                 )
             }
             else{
+                // if a contact is choosen and
+                //but  they dont have any msg...i.e new to conservation...
                 return(
                     <div className="messages" id="msgBoard" style={{height:100 +'vh',backgroundColor:'black'}}>
                         <ul id="msgBoardUl">
@@ -90,6 +79,7 @@ class messages extends Component {
                 )
             }
         }else{
+            // if a contact is not choosen...
             return(
                 <div className="messages-no-contact" style={{height:100 + 'vh'}}>
                     <div className="inner-messages-no-contact">
@@ -104,6 +94,9 @@ class messages extends Component {
 
     }
 }
+
+//redux code..
+// no role in logic of app...just for future versions....for now ignore it...
 const mapDispatchToProps = (dispatch)=>{
     return{
         setMsgsToStore:(tokenId,msgs,cb)=>dispatch({type : "setMsgsToStore" ,tokenId,msgs,cb})

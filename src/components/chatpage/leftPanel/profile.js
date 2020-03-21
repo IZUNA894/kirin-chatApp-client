@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {MainContext} from "../../../context/mainContext";
-import axios from 'axios';
 
  class profile extends Component {
     static contextType = MainContext;
@@ -11,21 +10,7 @@ import axios from 'axios';
         username:null
     }
     componentWillMount(){
-    //    var token = localStorage.getItem("token");
-    //    axios.get('http://kirin-chatapp-server.herokuapp.com/users/me/avatar',{
-    //        headers:{
-    //         'Authorization': `Bearer ${token}`
-    //        },
-    //        responseType: 'stream'
-        
-    //    })
-    //    .then((res)=>{
-           
-    //        var data = res.data;
-    //        console.log("inside get req of getting img",data);
-    //        var data =Buffer.from(data, 'binary').toString('base64');
-    //        this.setState({img:data});
-    //    })
+    // before rendering a comp. fetch the data from browser storage and store it
     var user = localStorage.getItem('user');
     user = JSON.parse(user);
     this.setState({id:user._id});
@@ -33,12 +18,13 @@ import axios from 'axios';
     this.setState({username:user.username});
     this.setState({email:user.email});
     }
+
     render() {
         var {sender} = this.context;
         return (
             <div id="profile">
                 <div className="wrap">
-                    <img id="profile-img" src={'http://kirin-chatapp-server.herokuapp.com/users/' + this.state.id + '/avatar'} className="online" alt="" />
+                    <img id="profile-img" src={'http://localhost:3001/users/' + this.state.id + '/avatar'} className="online" alt="" />
                     <p>{ sender }</p>
                     <i className="fa fa-chevron-down expand-button" aria-hidden="true"></i>
                     <div id="status-options">

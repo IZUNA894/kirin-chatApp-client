@@ -20,6 +20,7 @@ import "../../css/chatpage.css";
     handleSubmit = (e)=>{
         e.preventDefault();
         console.log(this.state);
+        var button = document.querySelector('#submitButton');
         var name = this.state.name;
         var email = this.state.email;
         var phoneno = this.state.phoneno;
@@ -32,8 +33,13 @@ import "../../css/chatpage.css";
         var imagefile = document.querySelector('#avatar');
         formData.append("avatar", imagefile.files[0]);
         
-
-        axios.post('http://kirin-chatapp-server.herokuapp.com/users/create', {
+        if(name && email && phoneno && username && password && confirmPassword){
+            //if usr has filled email and password and click the submit button
+            //disabled it...so the user cannot press it again..
+            //this will prevent unneccasary req to server...thus error reduceed...
+            button.setAttribute("disabled","disabled");
+            }
+        axios.post('http://localhost:3001/users/create', {
                 name,
                 email,
                 phoneno,
@@ -56,7 +62,7 @@ import "../../css/chatpage.css";
             .then( async ()=>{
                 var token = this.state.token;
                 
-                return (axios.post('http://kirin-chatapp-server.herokuapp.com/users/me/avatar', formData, {
+                return (axios.post('http://localhost:3001/users/me/avatar', formData, {
                                         headers: {
                                                     'Authorization': `Bearer ${token}`,
                                                     'Content-Type': 'multipart/form-data'
@@ -75,19 +81,21 @@ import "../../css/chatpage.css";
                 console.log(error.response);
                 var errMsg = document.querySelector('.errMsg');
 
-                if(error.response.status == 400)
+                if(error && error.response && error.response.status && error.response.status == 400){
+                    errMsg.innerHTML = error.response.data;
+                    //if error hass released the submit buttom so user can press it again...
+                    button.removeAttribute("disabled");
+                    }
+                else{
                 errMsg.innerHTML = error.response.data;
-                else
-                errMsg.innerHTML = error.response.data;
-
-            
+                //if error hass released the submit buttom so user can press it again...
+                button.removeAttribute("disabled");
+                }
             }); 
 
 
     }
-    checkInput = ()=>{
-
-    }
+    
     render() {
         return (
             <div>
@@ -111,7 +119,7 @@ import "../../css/chatpage.css";
                 </div>
                 <div className="form-group">
                     <label htmlFor="avatar">Avatar <span className="errMsg" id="addon">*</span></label>
-                    <input type="file" name="avatar" id="avatar" className="form-control" placeholder="avatar" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="choose a pic of you,in png or jpeg format,under 1Mb" required  />
+                    <input type="file" name="avatar" id="avatar" className="form-control" placeholder="avatar" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="choose a pic of you,in png or jpeg format,under 5Mb" required  />
                 </div>
                 <div className="form-group">
                     <label htmlFor="username">Username <span className="errMsg" id="addon">*</span></label>
@@ -125,7 +133,7 @@ import "../../css/chatpage.css";
                     <label htmlFor="confirmPassword">Confirm password <span className="errMsg" id="addon">*</span></label>
                     <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" placeholder="confirmPassword" onChange={this.handleChange} data-toggle="tooltip" data-placement="top" title="should match with above password" required  />
                 </div>
-                <button className="btn btn-lg btn-primary btn-block" type="submit">Sign -Up</button>
+                <button id="submitButton" className="btn btn-lg btn-primary btn-block" type="submit">Sign -Up</button>
               </form>
               <div className="new-user-text">
                   <p>Already have an Account ? <a href='/'> Login</a></p>

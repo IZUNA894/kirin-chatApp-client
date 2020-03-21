@@ -4,7 +4,6 @@ import styles from "../../css/peopleList.module.css"
 import axios from "axios";
 import {MainContext} from "../../context/mainContext"
 import SearchBox from "../peopleList/searchBar"
-import poke1 from "../../images/poke-3.png";
 
 
 
@@ -26,39 +25,29 @@ class peopleList extends Component {
         var owner = localStorage.getItem('user');
         owner = JSON.parse(owner);
 
-            axios.get('http://kirin-chatapp-server.herokuapp.com/users/all')
+            axios.get('http://localhost:3001/users/all')
                  .then(async function (response) {
                    users = response.data;
                    console.log(users);
-                   //somecall({users});
                    users = users.filter((user)=>{
                        return user._id != owner._id
                    })
                    callSetTheUsrs(users);
                   
-                // if(sender.length < reciever.length)
-                // tokenId = sender + reciever;
-                // else
-                // tokenId = reciever + sender;
-    
-                // tokenId = tokenId.split(" ").join().replace(/,/g,"");
-    
-                // console.log(msgs,tokenId);
+                
                 
               })
               .catch(function (error) {
                 console.log(error);
               }); 
-     //console.log(users);
-  
-     //this.setState({users:4});
+     
     }
     addFriend(usr){
         console.log("clicked")
         var {sender} = this.context;
         var props  = this.props;
         //var sender = "Mike Ross";
-        axios.patch("http://kirin-chatapp-server.herokuapp.com/rel/addFriend",{
+        axios.patch("http://localhost:3001/rel/addFriend",{
             sender,uid:usr._id
         })
         .then(function(res){
@@ -86,7 +75,7 @@ class peopleList extends Component {
             return <div className="col-md-12">                       
                 <div className={styles.card}>
                     <div className={styles.cardBody}>
-                        <div className="media align-items-center"><span  style={{backgroundImage: 'url(http://kirin-chatapp-server.herokuapp.com/users/' + usr._id + '/avatar)'}} className={divClass} ></span>
+                        <div className="media align-items-center"><span  style={{backgroundImage: 'url(http://localhost:3001/users/' + usr._id + '/avatar)'}} className={divClass} ></span>
                             <div className="media-body overflow-hidden" style={{paddingLeft:'20px'}}>
                                 <h5 className="card-text mb-0">{usr.name}</h5>
                                 <p className="card-text text-muted">{'@' +  usr.username}</p>

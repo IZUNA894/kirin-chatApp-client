@@ -1,7 +1,10 @@
+//msg input box...
+// when a user types and hit enter...
+// a msg obj is form snd send to socketUtil.js from where it is sent to server...
 import React, { Component } from 'react'
 import date from "date-and-time";
 import 'date-and-time/plugin/meridiem';
-import {hello, sendMsg,recieveMsg,join} from "../../../js/socketUtil";
+import {sendMsg} from "../../../js/socketUtil";
 import {MainContext} from "../../../context/mainContext";
 
   class MsgInputParent extends Component{
@@ -16,7 +19,7 @@ import {MainContext} from "../../../context/mainContext";
     }
 
   }
- // Apply the plugin to "date-and-time".
+ // Appling the plugin to "date-and-time".
  date.plugin('meridiem');
 
  class MsgInput extends Component {
@@ -28,11 +31,9 @@ import {MainContext} from "../../../context/mainContext";
      sender:null
 
    }
-   //static contextType = MainContext;
 
    static getDerivedStateFromProps = (props, state)=>{
-     //console.log(props);
-     //var {sender,openedContact} = this.context;
+     
      var reciever = props.reciever;
      var sender = props.sender;
      return {...this.state,
@@ -46,7 +47,9 @@ import {MainContext} from "../../../context/mainContext";
      var inp =document.getElementById("msgData");
       console.log(this.state);
       inp.value="";
+      //send the msg to server...
       sendMsg(this.state);
+      //send the msg to lacal state..
       this.props.addMsgtostate(this.state);
 
    }
@@ -55,7 +58,6 @@ import {MainContext} from "../../../context/mainContext";
    }
    componentWillMount(){
       
-      //join(this.state.sender);
     }
     render() {     
       

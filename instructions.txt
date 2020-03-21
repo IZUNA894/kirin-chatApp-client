@@ -1,0 +1,27 @@
+Hey there,hope you are doing fine...
+
+This is my chat app . KIRIN...
+ya i know name of is'nt that much interesting..
+skipping the unneccessary talking...jumping staright
+
+INSTRUCTIONS TO RUN THIS app
+1: this app is made to run on both mode i.e locally as well as on remote server.
+   for running on localhost(on your machine) ,you should the download files from 'master' branch
+2: to run this app on remote server ,download files from 'remote' branch of this git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+read the read.me for further instructions.happy codding.
