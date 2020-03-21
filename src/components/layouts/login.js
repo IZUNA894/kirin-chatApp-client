@@ -25,7 +25,7 @@ import axios from "axios";
         button.setAttribute("disabled","disabled");
         }
         
-        axios.post('http://localhost:3001/users/login', {
+        axios.post('http://kirin-chatapp-server.herokuapp.com/users/login', {
                 email,
                 password
             })

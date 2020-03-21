@@ -40,7 +40,7 @@ import "../../../css/chatpage.css";
         var addMsgstoState = this.wrapper(this.addMsgstoState);
         //axios req to fetch msg from server
         if(shouldFetch){
-            axios.get('http://localhost:3001/msg/getMsg', {
+            axios.get('http://kirin-chatapp-server.herokuapp.com/msg/getMsg', {
                 params: {
                 sender,
                 reciever
@@ -79,7 +79,7 @@ import "../../../css/chatpage.css";
     deleteFriend = (usr)=>{
         var {sender} = this.context;
        
-        axios.patch("http://localhost:3001/rel/deleteFriend",{
+        axios.patch("http://kirin-chatapp-server.herokuapp.com/rel/deleteFriend",{
             sender,uid:usr._id
         })
         .then((res)=>{
@@ -98,7 +98,7 @@ import "../../../css/chatpage.css";
         if(contact)
         return (
             <div id ="contact-profile" className="contact-profile">
-                <img src={'http://localhost:3001/users/' + contact._id + '/avatar'} alt="" />
+                <img src={'http://kirin-chatapp-server.herokuapp.com/users/' + contact._id + '/avatar'} alt="" />
                 <p>{contact.username}</p>
                 <div className="social-media">
                     <i className="fa fa-facebook" aria-hidden="true"></i>

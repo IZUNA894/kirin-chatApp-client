@@ -39,7 +39,7 @@ import "../../css/chatpage.css";
             //this will prevent unneccasary req to server...thus error reduceed...
             button.setAttribute("disabled","disabled");
             }
-        axios.post('http://localhost:3001/users/create', {
+        axios.post('http://kirin-chatapp-server.herokuapp.com/users/create', {
                 name,
                 email,
                 phoneno,
@@ -62,7 +62,7 @@ import "../../css/chatpage.css";
             .then( async ()=>{
                 var token = this.state.token;
                 
-                return (axios.post('http://localhost:3001/users/me/avatar', formData, {
+                return (axios.post('http://kirin-chatapp-server.herokuapp.com/users/me/avatar', formData, {
                                         headers: {
                                                     'Authorization': `Bearer ${token}`,
                                                     'Content-Type': 'multipart/form-data'
