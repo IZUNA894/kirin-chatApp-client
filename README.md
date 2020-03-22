@@ -16,7 +16,9 @@ for server side of app [go there]().
 ## technology used
 
 📌 React.js - for serving dynamic ui and other features.
+
 📌 Bootstrap - for styling web pages and components.
+
 📌 Some npm modules - for providing various functionalty
 
 ## running 
@@ -38,16 +40,25 @@ jainsanyam1261@gmail.com ,i will guide you through.
 
 ### Scope of further developemt
 📌E-mail or phone no. validation through OTP or some other service.
+
 📌media and voice message sending feature.
+
 📌emoji feature through message.
+
 📌Notifiactions service when user recieves a new message.
+
 📌Sending geolocations through message.
+
 📌feature through which user can unsend his message like of whatsapp.
+
 📌feature through which user can block or starred his friends.
+
 📌feature showing online,offline and his last seen to others.
+
 📌and some more...
+
 📌if you want to add some of your own feature..you are welcome...
-📌
+
 
 ###future versions
 i am currently learning Artificial intelligence and machine learning ,so i am thinking of implementing a caht bot in it with a.i.
