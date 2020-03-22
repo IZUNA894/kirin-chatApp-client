@@ -61,5 +61,5 @@ jainsanyam1261@gmail.com ,i will guide you through.
 
 
 ###future versions
-i am currently learning Artificial intelligence and machine learning ,so i am thinking of implementing a caht bot in it with a.i.
+i am currently learning Artificial intelligence and machine learning ,so i am thinking of implementing a chat bot in it with a.i.
 so stay tuned for it😎😎😎😎
