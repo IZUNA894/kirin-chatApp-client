@@ -1,71 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Kirin 
+### A Simple chat app made by me , in js only..
 
-## Available Scripts
+On a lame note...😃😃😃,i started this project to test what i know , to apply what i have previously learned...to practice my web app developement...i just started with no no clue ,just out of pure hobby...Though it took me nearly 3 months to complete to that limit where i can show it to non technical background user...but still ,journey was full of ups and down ,full of exihalereting kicks and more...
 
-In the project directory, you can run:
+### About this app
+This app is web app,made with web technologies...
+this app is made in 2 parts.
+1:Client - front end of app.
+2:Server - back end of app.
 
-### `npm start`
+this repositry is for client side of app.
+for server side of app [go there]().
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Client side
+## technology used
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+📌 React.js - for serving dynamic ui and other features.
+📌 Bootstrap - for styling web pages and components.
+📌 Some npm modules - for providing various functionalty
 
-### `npm test`
+## running 
+# localhost
+for running this app in your local machine ,download this repo,other part i.e server part , in root directory of this app 
+run  `npm install` to install all dependencies 
+and then run `npm start`. (assumming you are running your server side code on port 30001,if not change it😁).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# remote
+for running this app in your remote server ,download this repo but from other branch i.e form 'remote' branch .
+they are both same code,but with 1 differnce ,at some point in code i have to link to server code so in master branch ,that link points to localhost ,in remote branch ,that links points to remote link , all other things are same..,
+download other part i.e server part ,
+and deploy to your server
 
-### `npm run build`
+### Contributions are welcome
+this project ,although its my personnel project ...i am opening to all who want to contribute to it...
+i have heavily commented it...ideally you shouldn't be having any problem in understanding of code...if you have so then email me at
+jainsanyam1261@gmail.com ,i will guide you through.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Scope of further developemt
+📌E-mail or phone no. validation through OTP or some other service.
+📌media and voice message sending feature.
+📌emoji feature through message.
+📌Notifiactions service when user recieves a new message.
+📌Sending geolocations through message.
+📌feature through which user can unsend his message like of whatsapp.
+📌feature through which user can block or starred his friends.
+📌feature showing online,offline and his last seen to others.
+📌and some more...
+📌if you want to add some of your own feature..you are welcome...
+📌
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
- 
- replace this line with http://kirin-chatapp-server.herokuapp.com
- http://localhost:3001
+###future versions
+i am currently learning Artificial intelligence and machine learning ,so i am thinking of implementing a caht bot in it with a.i.
+so stay tuned for it😎😎😎😎
